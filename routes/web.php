@@ -19,3 +19,13 @@ Route::get('/', function () {
 })->name('accueil');
 
 Route::get('/etudiant', [EtudiantController::class, 'index'])->name('etudiant');
+Route::get('/etudiant/create', [EtudiantController::class, 'create'])->name('etudiant.create');
+
+Route::get('/etudiant/{etudiant}', [EtudiantController::class, 'edit'])->name('etudiant.edit');
+
+Route::post('/etudiant/create', [EtudiantController::class, 'ajouter'])->name('etudiant.ajouter');
+Route::delete('/etudiant/{etudiant}', [EtudiantController::class, 'supprimer'])->name('etudiant.supprimer');
+
+//Route::delete('/etudiant/{etudiant}' le{etudiant} fait ref au param etudiant que j'ai mis dans etudiant.blade.php, ici on point sur lui
+
+Route::put('/etudiant/{etudiant}', [EtudiantController::class, 'update'])->name('etudiant.update');
