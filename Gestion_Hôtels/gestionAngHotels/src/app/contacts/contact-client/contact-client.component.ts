@@ -4,7 +4,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-contact-client',
   templateUrl: './contact-client.component.html',
-  styleUrl: './contact-client.component.css'
+  styleUrl: './contact-client.component.css',
+  host: {ngSkipHydration: 'true'},
+
 })
 export class ContactClientComponent implements OnInit{
   name: string='';

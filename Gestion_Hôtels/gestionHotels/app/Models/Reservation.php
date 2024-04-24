@@ -17,6 +17,6 @@ class Reservation extends Model
     //pour l'erreur de liaison entre client et reservation, j'ai fait premierement  return $this->belongsTo(Client::class, 'idC'); parceque laravel va cherché client_id et pas idC, je dois spécifiée un custom foreign key pour la relation, mais il n'a pas aidé(j'aurais besoin de 'idC' pour les resrvations), puis j'ai fais la meme chose dans client pour qu'il recognise la reservation et ca a réussie. 
 
     public function room(){
-        return $this->belongsTo(Chambre::class);
+        return $this->belongsTo(Chambre::class, 'id');
     }
 }

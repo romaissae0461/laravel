@@ -11,12 +11,12 @@ import { ManagerComponent } from './managers/manager/manager.component';
 import { ContactClientComponent } from './contacts/contact-client/contact-client.component';
 import { CreateRComponent } from './reservations/create-r/create-r.component';
 import { ReservationComponent } from './reservations/reservation/reservation.component';
-import { EditRComponent } from './reservations/edit-r/edit-r.component';
 import { PclientComponent } from './pageClient/pclient/pclient.component';
 import { RoomsComponent } from './pageClient/rooms/rooms.component';
 import { ClientPComponent } from './pageClient/client-p/client-p.component';
 import { ServicesComponent } from './services/services.component';
 import { PlansComponent } from './plans/plans.component';
+import { CreateReservComponent } from './reservations/create-reserv/create-reserv.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -32,11 +32,14 @@ const routes: Routes = [
   {path: 'manager', component:ManagerComponent},
   {path: 'contact/client', component:ContactClientComponent},
   {path: 'create-r', component:CreateRComponent},
-  {path: 'edit-r', component:EditRComponent},
+  {path: 'createReserv', component:CreateReservComponent},
   {path: 'rooms', component:RoomsComponent},
   {path: 'clientP', component:ClientPComponent},
   {path: 'services', component:ServicesComponent},
-  {path: 'plans', component:PlansComponent}
+  {path: 'plans', component:PlansComponent},
+  {path: 'page1', component:CreateReservComponent},
+  {path: 'page2', component:CreateReservComponent},
+  {path: 'page3', component:CreateReservComponent},
 ];
 
 @NgModule({

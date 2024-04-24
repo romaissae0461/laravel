@@ -26,10 +26,7 @@
                     <input name="email" type="text" [(ngModel)]="email">
                 </div>
 <br>
-                <div class="medium-4 columns">
-                    <label class="label info">Date de reservation: </label><br>
-                    <input name="dateReserv" type="date" [(ngModel)]="dateReserv">
-                </div>
+                
 <br>
                 <div class="d-flex align-item-center justify-content-between ">
                     <div>
@@ -57,6 +54,10 @@
                         <option *ngFor="let chambre of chambres" value="{{chambre.id}}">{{chambre.numC}}</option>
                     </select>
                 </div>
+                
+                <input type="text" name="id" [(ngModel)]="id">
+                <input type="text" name="idC" [(ngModel)]="idC">
+                
                 
     <button type="submit" class="btn btn-primary" (click)="store()">Enregistrer</button>
     <a href="/home" class="btn btn-danger">Annuler</a>

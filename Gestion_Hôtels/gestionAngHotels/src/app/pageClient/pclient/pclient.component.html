@@ -454,10 +454,18 @@
         <i class="fa fa-phone w3-text-brown" style="width:30px"></i> Phone: +212 6555555<br>
         <i class="fa fa-envelope w3-text-brown" style="width:30px"> </i> Email: hotel.DelLuna&#64;gmail.com<br>
         <form (ngSubmit)="contactUs()">
+            <div class="d-flex align-content-between justify-content-between">
+            <div class="block" style="width: 100%;">
         <p><input class="w3-input w3-padding-16 w3-border" name="name" type="text" placeholder="Name" [(ngModel)]="name"></p>
         <p><input class="w3-input w3-padding-16 w3-border" name="email" type="text" placeholder="Email" [(ngModel)]="email"></p>
         <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message" [(ngModel)]="message" name="message"></p>
         <p><button class="w3-button w3-black w3-padding-large" type="submit">Envoyer Message</button></p>
+            </div>
+            <div class="block second-block">
+                <img src="../assets/luna/contactHeader.jpg" alt="" width="100%" height="100%">
+
+            </div>
+        </div>
         </form>
     </div>
 

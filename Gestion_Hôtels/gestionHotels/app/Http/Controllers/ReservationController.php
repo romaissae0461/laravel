@@ -6,7 +6,7 @@ use App\Models\Chambre;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Carbon\Carbon;
 use Auth;
 
 class ReservationController extends Controller
@@ -16,44 +16,53 @@ class ReservationController extends Controller
         //return view('reservations.book', compact('rooms'));
         return response()->json($reservation);
     }
+
+    public function create(){
+        return response()->json();
+    }
 //dateReserv	dateArrivee	dateDepart	nbrChambre	nbrPersonne	created_at	updated_at	idC	id	
     public function store(Request $request){
         $this->validate($request,[
             'nom'=>'required|string',
             'prenom'=>'required|string',
             'email'=>'required|string',
-            'dateReserv'=>'required|date',
             'dateArrivee'=>'required|date',
             'dateDepart'=>'required|date',
             'nbrChambre'=>'required|integer',
-            'nbrPersonne'=>'required|integer'
+            'nbrPersonne'=>'required|integer',
+            'idC' => 'required|integer',
+            'id' => 'required|integer',
         ]);
+        $currentDate = Carbon::now();
         $room = Chambre::find($request->id);
+        if(!$room){
+            return response()->json(['error'=>'Room is not found'], 404);
+        }
         if($room->status == 0){
             return response()->json(['error'=>'Chambre réservée!'], 400);
         }
 
-        $existingReservation = DB::table('reservations')
-        ->where('id', $request->id)
-        ->where(function ($query) use ($request){
-            $query->whereBetween('dateArrivee', [$request->dateReserv, $request->dateDepart])
-            ->orWhereBetween('dateDepart', [$request->dateReserv, $request->dateDepart])
-            ->orWhere(function ($query) use ($request) {
-                $query->where('dateArrivee', '<=', $request->dateReserv)
-                ->where('dateDepart', '>=', $request->dateDepart);
-            });
-        })
-        ->first();
+        // $existingReservation = DB::table('reservations')
+        // ->where('id', $request->id)
+        // ->where(function ($query) use ($request){
+        //     $query->whereBetween('dateArrivee', [$request->currentDate, $request->dateDepart])
+        //     ->orWhereBetween('dateDepart', [$request->currentDate, $request->dateDepart])
+        //     ->orWhere(function ($query) use ($request) {
+        //         $query->where('dateArrivee', '<=', $request->currentDate)
+        //         ->where('dateDepart', '>=', $request->dateDepart);
+        //     });
+        // })
+        // ->first();
 
-        if($existingReservation){
-            return response()->json(['error'=>'Chambre réservée pour la date spécifié'], 400);
-        }
+        // if($existingReservation){
+        //     return response()->json(['error'=>'Chambre réservée pour la date spécifié'], 400);
+        // }
 
         $reservation = new Reservation();
         $reservation->nom = $request->nom;
         $reservation->prenom = $request->prenom;
         $reservation->email = $request->email;
-        $reservation->dateReserv = $request->dateReserv;
+        $reservation->dateReserv = $currentDate;
         $reservation->dateArrivee = $request->dateArrivee;
         $reservation->dateDepart = $request->dateDepart;
         $reservation->nbrChambre = $request->nbrChambre;

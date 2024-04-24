@@ -58,7 +58,6 @@ Route::get('/chambre/type', [RoomController::class,'roomType']);
 
 Route::get('/chambres', [RoomController::class, 'index']);
 Route::get('/chambre/create', [RoomController::class,'create']);
-//Route::get('/chambre/type', [RoomController::class,'roomType']);
 Route::get('/chambre/type/{id}', [RoomController::class,'roomTypeId']);
 Route::post('/chambre/store', [RoomController::class,'store']);
 Route::get('/chambre/show/{id}', [RoomController::class, 'show']);
@@ -72,6 +71,7 @@ Route::delete('/chambre/delete/{id}', [RoomController::class, 'destroy']);
 //Reservations routes
 
 Route::get('reservation', [ReservationController::class, 'index']);
+Route::get('/reservation/create', [ReservationController::class,'create']);
 Route::post('reservation/store', [ReservationController::class,'store']);
 Route::post('reservation/check', [ReservationController::class, 'checkAvailability']);
 //End reservations routes

@@ -66,7 +66,7 @@ use Illuminate\Support\Facades\Route;
 // Route::post('/contacts/store', [ContactController::class,'store'])->name('contacts.store');
 //end contacts routes
 
-//Client routes
+// Client routes
 // Route::get('/index', [ClientController::class,'index'])->name('clients.index');
 // Route::get('/clients/create', [ClientController::class, 'create'])->name('clients.create');
 // Route::post('/clients/store', [ClientController::class, 'store'])->name('clients.store');
@@ -74,9 +74,9 @@ use Illuminate\Support\Facades\Route;
 // Route::put('/clients/{client}', [ClientController::class, 'update'])->name('clients.update');
 // Route::get('/show/{id}', [ClientController::class,'show'])->name('clients.show');
 // Route::delete('/delete/{id}', [ClientController::class,'delete'])->name('clients.delete');
-//End Client routes
+// End Client routes
 
-//Route::get('/index', [ClientController::class, 'index']);
+// Route::get('/index', [ClientController::class, 'index']);
 
 // Route::get('/register', [LoginController::class, 'register'])->name('login.register');
 // Route::post('/register', [LoginController::class, 'create'])->name('login.create');
@@ -97,11 +97,11 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', [Admin::class, 'offres'])->name('admin.offres');
 
 
-//Route::resource('/clients','ClientController');
-//Route::resource('/reservations','ReservationController');
-//Route::resource('/rooms','RoomController');
-//Route::resource('/contacts','ContactController');
-//Route::resource('/managers','ManagerController');
+// Route::resource('/clients','ClientController');
+// Route::resource('/reservations','ReservationController');
+// Route::resource('/rooms','RoomController');
+// Route::resource('/contacts','ContactController');
+// Route::resource('/managers','ManagerController');
 // Route::group(['middleware'=>'auth'],function(){
 //     Route::get('/logout',[
 //         'uses'=>'ClientController@logout',

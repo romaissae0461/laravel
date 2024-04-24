@@ -12,6 +12,6 @@ class Chambre extends Model
     protected $fillable = ['image','numC', 'nbrLits', 'type_chambre_id', 'prixC', 'etage', 'status', 'infos'];
 
     public function reservations(){
-        return $this->hasMany(Reservation::class);
+        return $this->hasMany(Reservation::class, 'idReserv');
     }
 }

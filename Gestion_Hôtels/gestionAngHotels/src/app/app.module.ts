@@ -16,7 +16,6 @@ import { ManagerComponent } from './managers/manager/manager.component';
 import { ContactClientComponent } from './contacts/contact-client/contact-client.component';
 import { CreateRComponent } from './reservations/create-r/create-r.component';
 import { ReservationComponent } from './reservations/reservation/reservation.component';
-import { EditRComponent } from './reservations/edit-r/edit-r.component';
 import { PclientComponent } from './pageClient/pclient/pclient.component';
 import { ClientPComponent } from './pageClient/client-p/client-p.component';
 import { RoomsComponent } from './pageClient/rooms/rooms.component';
@@ -29,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { CreateReservComponent } from './reservations/create-reserv/create-reserv.component';
 
 
 @NgModule({
@@ -46,12 +46,12 @@ import { MatIconModule } from '@angular/material/icon';
     ManagerComponent,
     ContactClientComponent,
     CreateRComponent,
-    EditRComponent,
     ClientPComponent,
     PclientComponent,
     RoomsComponent,
     ServicesComponent,
-    PlansComponent
+    PlansComponent,
+    CreateReservComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +65,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatListModule,
     MatIconModule,
     BrowserAnimationsModule,
+    MatButtonModule, 
+    MatMenuModule,
   ],
   providers: [
     provideClientHydration()

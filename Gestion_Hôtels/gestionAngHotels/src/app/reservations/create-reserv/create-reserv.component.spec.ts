@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditRComponent } from './edit-r.component';
+import { CreateReservComponent } from './create-reserv.component';
 
-describe('EditRComponent', () => {
-  let component: EditRComponent;
-  let fixture: ComponentFixture<EditRComponent>;
+describe('CreateReservComponent', () => {
+  let component: CreateReservComponent;
+  let fixture: ComponentFixture<CreateReservComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EditRComponent]
+      declarations: [CreateReservComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(EditRComponent);
+    fixture = TestBed.createComponent(CreateReservComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

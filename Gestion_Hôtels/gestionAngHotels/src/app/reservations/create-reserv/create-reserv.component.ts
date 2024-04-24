@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-create-r',
-  templateUrl: './create-r.component.html',
-  styleUrl: './create-r.component.css'
+  selector: 'app-create-reserv',
+  templateUrl: './create-reserv.component.html',
+  styleUrl: './create-reserv.component.css',
+  host: {ngSkipHydration: 'true'},
+
 })
-export class CreateRComponent  implements OnInit{
+export class CreateReservComponent  implements OnInit{
 
   nom: string='';
   prenom: string='';
@@ -15,10 +17,10 @@ export class CreateRComponent  implements OnInit{
   dateReserv: Date= new Date();
   dateArrivee: Date= new Date();
   dateDepart: Date= new Date();
-  nbrChambre= 0;
-  nbrPersonne = 0;
-  idC: number=0;
-  id: number=0;
+  nbrChambre: any;
+  nbrPersonne: any;
+  idC: any;
+  id: any;
 
   successMessage: any;
   errorMessage: any;
@@ -31,16 +33,30 @@ export class CreateRComponent  implements OnInit{
   prixC: any;
   etage: any;
   status: any;
-  constructor(private http: HttpClient, private route:ActivatedRoute) {
+  typeChambre: any;
+  currentPage: string='';
+  constructor(private http: HttpClient, private route:ActivatedRoute, private router: Router) {
 
   }
 
   ngOnInit(): void {
     this.getChambres();
-    // this.route.queryParams.subscribe(params => {
-    //   this.id = params['id']; 
-    //   this.getChambreDetails(this.id); 
-    // });
+    this.getChambreType();
+    this.route.url.subscribe(url => {
+      this.currentPage = url[0].path;
+    });
+    this.navigateToPage1();
+  }
+
+  
+  navigateToPage1() {
+    this.router.navigate(['/page1']);
+  }
+  navigateToPage2() {
+    this.router.navigate(['/page2']);
+  }
+  navigateToPage3() {
+    this.router.navigate(['/page']);
   }
 
   reservation(){
@@ -51,6 +67,13 @@ export class CreateRComponent  implements OnInit{
     })
   }
 
+  create(){
+    this.http.get<any>('http://localhost:8000/api/reservation/create')
+    .subscribe((response)=>
+    {
+      console.log(response);
+    })
+  }
   store():void{
     let reservation={
       nom: this.nom,
@@ -60,8 +83,8 @@ export class CreateRComponent  implements OnInit{
       dateDepart: this.dateDepart,
       nbrChambre: this.nbrChambre,
       nbrPersonne: this.nbrPersonne,
-      id: this.id,
       idC: this.idC,
+      id: this.id
     }
     this.http.post<any>('http://localhost:8000/api/reservation/store', reservation)
     .subscribe((response)=>
@@ -76,23 +99,24 @@ export class CreateRComponent  implements OnInit{
   getChambres(){
     this.http.get('http://localhost:8000/api/chambres')
     .subscribe((response: any)=>{
-      
       this.chambres=response;
     })
   }
 
-  getChambreDetails(id: number):void{
-    this.http.get<any>('http://localhost:8000/api/chambre/'+id)
-    .subscribe((response: any)=>
-    {
-      console.log(response);
-      this.numC = response.numC;
-      this.nbrLits = response.nbrLits;
-      this.type_chambre_id = response.type_chambre_id;
-      this.prixC = response.prixC;
-      this.etage = response.etage;
-      this.status = response.status;
+  getChambreType():void{
+    this.http.get('http://localhost:8000/api/chambre/type')
+    .subscribe((response)=>{
+      this.typeChambre = response;
     })
+  }
+ 
+  calculDiff(){
+    dateArrivee: this.dateArrivee;
+    dateDepart: this.dateDepart;
+    
+    var days = Math.floor((this.dateDepart.getTime() - this.dateArrivee.getTime()) / 1000 / 60 / 60 / 24);
+    return days; 
   }
   
 }
+

@@ -43,9 +43,11 @@ export class PclientComponent implements OnInit {
 
   
   slides = [
-    { url: '../assets/image/banner-1.png', alt: 'Slide 1' },
-    { url: '../assets/image/banner-2.png', alt: 'Slide 2' },
-    { url: 'assets/image/banner-3.png', alt: 'Slide 3' }
+    { url: '../assets/luna/banner1.avif', alt: 'Slide 1' },
+    { url: '../assets/luna/banner2.jpg', alt: 'Slide 2' },
+    { url: '../assets/luna/banner3.jpg', alt: 'Slide 3' },
+    { url: '../assets/luna/banner4.jpg', alt: 'Slide 4' },
+    { url: '../assets/luna/banner5.jpg', alt: 'Slide 4' }
   ]
   slideIndex= 0;
 typeChambre: any;

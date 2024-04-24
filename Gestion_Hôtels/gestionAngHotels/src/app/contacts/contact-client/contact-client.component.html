@@ -12,29 +12,30 @@
         body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 
         .mySlides {display:none;}
-        img {
+        /* img {
             width: 100px; 
             height: auto;
             margin: 0 auto; 
-        }
+        } */
         </style>
                     
     </head>
     <body class="w3-white">
     <!-- Navigation Bar -->
-    <div class="navbar-container d-flex justify-content-center">
+    <div class=" d-flex justify-content-center" style="background-image: url(../assets/luna/hot.jpg); background-repeat: no-repeat; background-size: cover; background-position: 0% 230%; background-attachment: fixed; height: 400px;">
         <div class="logo d-flex">
-            <img src="../assets/imag/Del_Luna_Hotel.png" alt="" width="200px" height="60px">
+            <img src="" alt="Hotel Del Luna" width="200px" height="100px" style="margin: 0 auto; color: white;">
         </div>
-        <div class="links d-flex">
-            <a href="/rooms" class="w3-bar-item w3-button w3-mobile">Chambres</a>
-            <a href="#about" class="w3-bar-item w3-button w3-mobile">About</a>
-            <a href="/services" class="w3-bar-item w3-button w3-mobile">Services</a>
-            <a href="/contact/client" class="w3-bar-item w3-button w3-mobile">Contact</a>
+        <div class="links d-flex navbar-container">
+            <a href="/rooms" class="w3-bar-item w3-mobile" style="padding: 20px 16px; color:aliceblue">Chambres</a>
+            <a href="#about" class="w3-bar-item  w3-mobile" style="padding: 20px 16px; color:aliceblue">About</a>
+            <a href="/services" class="w3-bar-item  w3-mobile" style="padding: 20px 16px; color:aliceblue">Services</a>
+            <a href="/contact/client" class="w3-bar-item w3-mobile" style="padding: 20px 16px; color:aliceblue">Contact</a>
         </div>
-            <a href="/create-r" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">Réserver</a>
+            <a href="/create-r" class=" w3-bar-item button2 w3-right w3-mobile" style="height: 18%; color: lightgoldenrodyellow; ">Réserver une chambre</a>
         
-    </div><div class="row">
+    </div>
+    <div class="row">
     <div class="mt-4">
         <div *ngIf="successMessage" class="alert alert-success">
             <h3>{{ successMessage }}</h3>
@@ -46,7 +47,6 @@
         </div>
         <form method="post" action="/chambres">
             <input type="hidden" name="_method" value="put">
-            <hr>
             <!-- <img src="../assets/luna/star0.avif" width="10px"> -->
               <h1 class="heading-text text-center" style="background-image: url(../assets/luna/star0.avif); background-size: 60px; background-position: 9% 0 ; background-repeat: no-repeat;">Contactez nous</h1>
             <div>
