@@ -2,13 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
-  selector: 'app-create-reserv',
-  templateUrl: './create-reserv.component.html',
-  styleUrl: './create-reserv.component.css',
+  selector: 'app-page4',
+  templateUrl: './page4.component.html',
+  styleUrl: './page4.component.css',
   host: {ngSkipHydration: 'true'},
+
 })
-export class CreateReservComponent  implements OnInit{
+export class Page4Component implements OnInit{
 
   nom: string='';
   prenom: string='';
@@ -44,13 +46,11 @@ export class CreateReservComponent  implements OnInit{
     
   }
 
-  
-  
-  navigateToPage2() {
-    this.router.navigate(['/page2']);
+  navigateToPage3() {
+    this.router.navigate(['/page3']);
   }
   
-
+  
   reservation(){
     this.http.get<any>('http://localhost:8000/api/reservation')
     .subscribe((response)=>
@@ -111,4 +111,5 @@ export class CreateReservComponent  implements OnInit{
   }
   
 }
+
 

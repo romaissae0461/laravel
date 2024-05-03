@@ -33,6 +33,8 @@ export class PclientComponent implements OnInit {
   id: any;
   chambres: any;
   availableRooms: any[] = []; 
+  comment: string='';
+  
   // slideConfig = {
   //   autoplay: true,
   //   slidesToShow: 1,
@@ -52,6 +54,7 @@ export class PclientComponent implements OnInit {
   slideIndex= 0;
 typeChambre: any;
 chambre: any;
+
   constructor(private http: HttpClient, private router:Router, public elementRef: ElementRef){
     
   }

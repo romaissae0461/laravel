@@ -3,12 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-create-reserv',
-  templateUrl: './create-reserv.component.html',
-  styleUrl: './create-reserv.component.css',
+  selector: 'app-page2',
+  templateUrl: './page2.component.html',
+  styleUrl: './page2.component.css',
   host: {ngSkipHydration: 'true'},
+
 })
-export class CreateReservComponent  implements OnInit{
+export class Page2Component implements OnInit{
 
   nom: string='';
   prenom: string='';
@@ -34,7 +35,7 @@ export class CreateReservComponent  implements OnInit{
   status: any;
   typeChambre: any;
   currentPage: string='';
-  constructor(private http: HttpClient, private route:ActivatedRoute, private router: Router) {
+  constructor(private http: HttpClient, private route:ActivatedRoute, private router:Router) {
 
   }
 
@@ -45,9 +46,11 @@ export class CreateReservComponent  implements OnInit{
   }
 
   
-  
-  navigateToPage2() {
-    this.router.navigate(['/page2']);
+  navigateToPage1() {
+    this.router.navigate(['/createReserv']);
+  }
+  navigateToPage3() {
+    this.router.navigate(['/page3']);
   }
   
 

@@ -3,12 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-create-reserv',
-  templateUrl: './create-reserv.component.html',
-  styleUrl: './create-reserv.component.css',
+  selector: 'app-page3',
+  templateUrl: './page3.component.html',
+  styleUrl: './page3.component.css',
   host: {ngSkipHydration: 'true'},
+
 })
-export class CreateReservComponent  implements OnInit{
+export class Page3Component implements OnInit{
 
   nom: string='';
   prenom: string='';
@@ -44,13 +45,13 @@ export class CreateReservComponent  implements OnInit{
     
   }
 
-  
-  
   navigateToPage2() {
     this.router.navigate(['/page2']);
   }
+  navigateToPage4() {
+    this.router.navigate(['/page4']);
+  }
   
-
   reservation(){
     this.http.get<any>('http://localhost:8000/api/reservation')
     .subscribe((response)=>
@@ -111,4 +112,5 @@ export class CreateReservComponent  implements OnInit{
   }
   
 }
+
 

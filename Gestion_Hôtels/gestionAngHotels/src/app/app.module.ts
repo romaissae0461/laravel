@@ -29,6 +29,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { CreateReservComponent } from './reservations/create-reserv/create-reserv.component';
+import { Page2Component } from './reservations/page2/page2.component';
+import { Page3Component } from './reservations/page3/page3.component';
+import { Page4Component } from './reservations/page4/page4.component';
+
 
 
 @NgModule({
@@ -51,7 +55,10 @@ import { CreateReservComponent } from './reservations/create-reserv/create-reser
     RoomsComponent,
     ServicesComponent,
     PlansComponent,
-    CreateReservComponent
+    CreateReservComponent,
+    Page2Component,
+    Page3Component,
+    Page4Component,
   ],
   imports: [
     BrowserModule,

@@ -24,152 +24,16 @@
     </style>
     </head>
     <body class="w3-white">
-<div class="d-flex align-content-between justify-content-between" *ngIf="currentPage === 'page1'">
+<div class="d-flex align-content-between justify-content-between" style="position: fixed;">
     <div style="background-color: #F9E5CD; padding-right: 100px;">
         <h1 style="color: #351A09; text-align: center; padding: 20px; padding-left: 45px; padding-top: 200px;">Réservez votre chambre d'hôtel dès maintenant !</h1>
         <p style="color: gray; text-align: center; padding-left: 45px;">Remplissez simplement ce formulaire pour effectuer votre réservation</p>
-        <button href="Informations" class="button button3">Demande de réservation</button>
+        <button href="/page2" class="button button3" (click)="navigateToPage2()">Demande de réservation</button>
     </div>
     <div>
         <img src="../assets/luna/reserver.jpeg" alt="" width="550px" height="642px">
     </div>
 </div>
-<br>
-<div class="d-flex align-content-between justify-content-between" *ngIf="currentPage === 'page2'">
-    <div style="background-color: #F9E5CD; padding-right: 236px;">
-        <button style="background: none; border: none; cursor: pointer; margin-top: 20px; padding-left: 20px;"><i class='fa fa-arrow-circle-left' style='font-size:28px;color:#5A3520'></i></button>
-        <h2 style="color: #351A09; padding: 20px; padding-left: 45px;"><strong>Vos Informations</strong></h2>
 
-        <form method="post" action="/clients" style="padding: 0px 30px;">
-            <input type="hidden" name="_method" value="put">
-            <div class="" style="margin: 10px;">
-                <input name="nom" type="text" [(ngModel)]="nom" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 15px 12px; border-color: #47220d33; padding-right: 90%;" placeholder="Nom">
-            </div>
-<br>
-            <div class="" style="margin: 10px;">
-                <input name="prenom" type="text" [(ngModel)]="prenom" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 15px 12px; border-color: #47220d33; padding-right: 90%;" placeholder="Prénom">
-            </div>
-<br>
-            <div class="" style="margin: 10px;">
-                <input name="email" type="text" [(ngModel)]="email" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 16px 12px; border-color: #47220d33; padding-right: 87%; font-size:20px" class='fa fa-envelope' placeholder="&#xf0e0; Email">
-            </div>
-            </form><br>
-        <button  class="button button3">Suivant <i class="fa fa-arrow-right"></i></button>
-    </div>
-    <div>
-        <img src="../assets/luna/reserver.jpeg" alt="" width="565px" height="575px">
-    </div>
-</div>
-<br>
-<div class="d-flex align-content-between justify-content-between" *ngIf="currentPage === 'page3'">
-    <div style="background-color: #F9E5CD; padding-right: 236px;">
-        <button style="background: none; border: none; cursor: pointer; margin-top: 20px; padding-left: 20px;"><i class='fa fa-arrow-circle-left' style='font-size:28px;color:#5A3520'></i></button>
-        <h1 style="color: #351A09; padding: 20px; padding-left: 45px;">Détails de Réservation</h1>
-
-        <form method="post" action="/clients" style="padding: 0px 30px;">
-            <input type="hidden" name="_method" value="put">
-            <div class="" style="margin: 10px;">
-                <label class="label info">Date d'Arrivée </label><br>
-                <input name="dateArrivee" type="date" [(ngModel)]="dateArrivee" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; border-color: #47220d33; padding-right: 90%;">
-            </div>
-<br>
-            <div class="" style="margin: 10px;">
-                <label class="label info">Date de Départ </label><br>
-                <input name="dateDepart" type="date" [(ngModel)]="dateDepart" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; border-color: #47220d33; padding-right: 90%;">
-            </div>
-<br>
-            <div class="" style="margin: 10px;">
-                <input name="nbrNuits" type="text" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; border-color: #47220d33; padding-right: 78%;" placeholder="Total de nuits est {{calculDiff()}}">
-            </div><br>
-            <div class="" style="margin: 10px;">
-                <input name="nbrChambre" type="text" [(ngModel)]="nbrPersonne" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; border-color: #47220d33; padding-right: 78%;" placeholder="Nombre de Personnes">
-            </div><br>
-            <div class="" style="margin: 10px;">
-                <input name="nbrChambre" type="text" [(ngModel)]="nbrChambre" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; border-color: #47220d33; padding-right: 78%;" placeholder="Nombre de Chambres">
-            </div>
-           <br>
-           
-            <div class="" style="margin: 10px;">
-                <label class="label info">Type de chambre</label><br>
-                <div *ngFor="let type of typeChambre" style="margin-right: 10px; margin-bottom: 10px; font-size: 16px; margin-left: 5px; color: #5A3520; background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; padding-right: 50px;">
-                <input type="radio" name="type_chambre_id" [(ngModel)]="type_chambre_id" [value]="type.id">
-                <label style="font-weight: bold; font-size: 18px; color: #351A09; margin-bottom: 10px;"> {{type.typeC}}</label>
-                </div>
-            </div>
-            </form>
-        <button class="button button3">Suivant <i class="fa fa-arrow-right"></i></button>
-    </div>
-    <div>
-        <img src="../assets/luna/reserver.jpeg" alt="" width="565px" height="575px">
-    </div>
-</div>
-<!-- <div class="row">
-    <div class="medium-offset-4 medium-11 columns">
-        <h1>Formulaire de Reservation</h1>
-        <div class="d-flex align-item-center justify-content-center ">
-            <div *ngIf="successMessage" class="alert alert-success">
-                <h3>{{ successMessage }}</h3>
-            </div>
-            <div *ngIf="errorMessage" class="alert alert-danger">
-                <ul>
-                    <li>{{ errorMessage }}</li>
-                </ul>
-            </div>
-            <form method="post" action="/clients">
-                <input type="hidden" name="_method" value="put">
-                <hr> 
-                <div class="d-flex align-item-center justify-content-between">
-                    <label class="label info">Nom: </label><br>
-                    <input name="nom" type="text" [(ngModel)]="nom">
-                
-                    <label class="label info">Prenom: </label><br>
-                    <input name="prenom" type="text" [(ngModel)]="prenom">
-                </div>
-<br>
-                <div class="">
-                    <label class="label info">Email: </label><br>
-                    <input name="email" type="text" [(ngModel)]="email">
-                </div>
-<br>
-                <div class="medium-4 columns">
-                    <label class="label info">Date de reservation: </label><br>
-                    <input name="dateReserv" type="date" [(ngModel)]="dateReserv">
-                </div>
-<br>
-                <div class="d-flex align-item-center justify-content-between ">
-                    <div>
-                    <label class="label info">Date d'arrivée: </label><br>
-                    <input name="dateArrivee" type="date" [(ngModel)]="dateArrivee">
-                    </div>
-                    <div>
-                    <label class="label info">Date de départ: </label><br>
-                    <input name="dateDepart" type="date" [(ngModel)]="dateDepart">
-                    </div>
-                </div>
-<br>
-                <div class="d-flex align-item-centre justify-content-between">
-                    <label class="label info">Nombre de chambre: </label> <br>
-                    <input name="nbrChambre" type="text" [(ngModel)]="nbrChambre">
-                
-                    <label class="label info">Nombre de personne: </label><br>
-                    <input name="nbrPersonne" type="text" [(ngModel)]="nbrPersonne">
-                </div>
-<br>
-                <div class="medium-4 columns">
-                    <label class="label info">Numero de la chambre: </label><br>
-                    <select class="form-control" name="numC" [(ngModel)]="numC">
-                        <option value="">selectionnez une chambre</option>
-                        <option *ngFor="let chambre of chambres" value="{{chambre.id}}">{{chambre.numC}}</option>
-                    </select>
-                </div>
-                <input type="text" name="id" [(ngModel)]="id">
-                <input type="text" name="idC" [(ngModel)]="idC">
-                
-    <button type="submit" class="btn btn-primary" (click)="store()">Enregistrer</button>
-    <a href="/home" class="btn btn-danger">Annuler</a>
-            </form>
-        </div>
-    </div>
-</div>
 </body>
-</html> -->
+</html>

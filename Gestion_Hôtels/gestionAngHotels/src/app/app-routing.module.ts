@@ -17,6 +17,10 @@ import { ClientPComponent } from './pageClient/client-p/client-p.component';
 import { ServicesComponent } from './services/services.component';
 import { PlansComponent } from './plans/plans.component';
 import { CreateReservComponent } from './reservations/create-reserv/create-reserv.component';
+import { Page2Component } from './reservations/page2/page2.component';
+import { Page3Component } from './reservations/page3/page3.component';
+import { Page4Component } from './reservations/page4/page4.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -37,9 +41,10 @@ const routes: Routes = [
   {path: 'clientP', component:ClientPComponent},
   {path: 'services', component:ServicesComponent},
   {path: 'plans', component:PlansComponent},
-  {path: 'page1', component:CreateReservComponent},
-  {path: 'page2', component:CreateReservComponent},
-  {path: 'page3', component:CreateReservComponent},
+  {path: 'page2', component:Page2Component},
+  {path: 'page3', component:Page3Component},
+  {path: 'page4', component:Page4Component},
+  {path: 'login', component:LoginComponent}
 ];
 
 @NgModule({
