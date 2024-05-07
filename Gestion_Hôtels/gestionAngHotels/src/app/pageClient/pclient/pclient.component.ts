@@ -21,6 +21,7 @@ export class PclientComponent implements OnInit {
   currentSlideIndex = 0;
   name: string='';
   email: string='';
+  password: string='';
   message: string='';
   contacts: any;
   nom: string='';
@@ -88,7 +89,19 @@ chambre: any;
       }
     }
     
-  
+    logout(){
+      this.http.post<any>('http://localhost:8000/api/logout', {})
+      .subscribe(
+        (response) => {
+          console.log('Logged out successfully');
+          // Redirect to login or any other page after logout
+          this.router.navigate(['/login']);
+        },
+        (error) => {
+          console.error('Error logging out:', error);
+        }
+      );
+    }
 
   contactUs(): void{
     const contacts={

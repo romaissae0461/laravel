@@ -21,6 +21,7 @@ import { Page2Component } from './reservations/page2/page2.component';
 import { Page3Component } from './reservations/page3/page3.component';
 import { Page4Component } from './reservations/page4/page4.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -44,7 +45,8 @@ const routes: Routes = [
   {path: 'page2', component:Page2Component},
   {path: 'page3', component:Page3Component},
   {path: 'page4', component:Page4Component},
-  {path: 'login', component:LoginComponent}
+  {path: 'login', component:LoginComponent},
+  {path: 'register', component:RegisterComponent},
 ];
 
 @NgModule({

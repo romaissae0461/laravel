@@ -14,56 +14,46 @@ class LoginController extends Controller
         return response()->json();
     }
     public function login(Request $request){
-        $credentials=$request->only('email','password');
-        if(Auth::attempt($credentials)){
-            $user=Auth::user();
-            if($user->role=== 'admin'){
-                return redirect()->route('/admin');
-            }elseif($user->role==='user'){
-                //return redirect()->route('/');
-                return response()->json(['success'=>true]);
-            }else{
-                //return redirect()->route('');
-                return response()->json();
-            }
-        }else{
-            //return redirect()->back()->withErrors(['email'=>'Email or password incorrect']);
-            return response()->json(['fail'=>'Email ou mot de passe incorrect']);
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return response()->json(['message' => 'Authenticated'], 200);
         }
 
-        
+        return response()->json(['message' => 'Invalid credentials'], 401);
     }
 
-    public function register(Request $request){
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        return response()->json(['message' => 'Logged out'], 200);
+    }
+
+
+    public function getin(Request $request){
         $request->validate([
-            'name'=>'required|string|max:255',
-            'email'=>'required|string|email|unique:users,email|max:255',
-            'password'=> 'required|string|min:8|confirmed',
-            'role' => 'string',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
         ]);
 
         $user= User::create([
             'name'=>$request->name,
             'email'=>$request->email,
             'password'=>Hash::make($request->password),
-            'role' => $request->role,
         ]);
 
         Auth::Login( $user );
-        if ($user->role === 'admin') {
-            return redirect()->route('/admin');
-        } elseif ($user->role === 'user') {
-            //return redirect()->route('/');
-            return response()->json(['success'=>true]);
-        } else {
-            // return redirect()->route('');
-            return response()->json(['fail'=>'Vous ne pouvez pas vous inscrire']);
-        }
+        
+        return response()->json(['message' => 'User registered successfully', 'user' => $user], 201);
+
         // return redirect()->route('login')->with('success','Votre  compte a bien été créé. Vous pouvez maintenant vous connecter');
     }
 
-    public function create(){
-        //return view('register');
-        return response()->json();
-    }
+    
 }

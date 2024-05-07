@@ -261,21 +261,7 @@
               </div>
             </div>
           </div>
-          @foreach($offres as $hotel)
-          <div class="col-lg-4 col-md-6">
-            <div class="hotel">
-              @include('hotel', ['hotel' => $hotel])
-            <div class="stars">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-            </div>
-          </div>
-          </div>
-         
-        @endforeach
+          
               
           </div>
         </div>

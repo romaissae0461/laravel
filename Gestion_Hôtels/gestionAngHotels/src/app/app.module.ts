@@ -32,6 +32,9 @@ import { CreateReservComponent } from './reservations/create-reserv/create-reser
 import { Page2Component } from './reservations/page2/page2.component';
 import { Page3Component } from './reservations/page3/page3.component';
 import { Page4Component } from './reservations/page4/page4.component';
+import { RegisterComponent } from './register/register.component';
+import { LogoutComponent } from './logout/logout.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -59,6 +62,8 @@ import { Page4Component } from './reservations/page4/page4.component';
     Page2Component,
     Page3Component,
     Page4Component,
+    RegisterComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,6 +79,7 @@ import { Page4Component } from './reservations/page4/page4.component';
     BrowserAnimationsModule,
     MatButtonModule, 
     MatMenuModule,
+    MatSnackBarModule,
   ],
   providers: [
     provideClientHydration()
